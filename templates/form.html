@@ -8,9 +8,13 @@
         <form method="post">
             <table>
                 <tbody><tr>
+                    
                     <td><label for="username">Username</label></td>
                     <td>
                         <input name="username" value="" type="text">
+                       
+                        <span class=error> {{ user_error }}</span>
+                        
                         <span class="error"></span>
                         
                     </td>
@@ -19,14 +23,14 @@
                     <td><label for="password">Password</label></td>
                     <td>
                         <input name="password" type="password">
-                        <span class="error"></span>
+                        <span class="error">{{ pass_error }}</span>
                     </td>
                 </tr>
                 <tr>
                     <td><label for="verify">Verify Password</label></td>
                     <td>
                         <input name="verify" type="password">
-                        <span class="error"></span>
+                        <span class="error">{{ v_error }}</span>
                     </td>
                 </tr>
                 <tr>

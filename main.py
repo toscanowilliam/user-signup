@@ -22,12 +22,32 @@ def index():
 @app.route("/", methods=['POST']) 
 def validate_form():
     template = jinja_env.get_template('form.html')
-    name = ""
+    welcome_temp = jinja_env.get_template('welcome.html')
     name = request.form['username']
-    password = ""
-    email = ""
+    password = request.form['password']
+    verify = request.form['verify']
+    email = request.form['email']
+    user_error = ""
+    pass_error = ""
+    v_error = ""
+    error_happend = False
     if request.method == 'POST':
-        return welcome()
+
+        if checkString(name) == True:
+            user_error = "Please enter good username"
+            error_happend = True
+        if checkString(password) == True:
+            pass_error = "Please enter good password"
+            error_happend = True
+        if password != verify:
+            v_error = "Password does not match"
+            error_happend = True
+        if error_happend == True:
+            return render_template(template, user_error=user_error, pass_error=pass_error, v_error=v_error)
+
+        username = request.form['username']
+        template = jinja_env.get_template('welcome.html')
+        return render_template(template, username=username,)
     
 
 
@@ -36,5 +56,11 @@ def welcome():
     username = request.form['username']
     template = jinja_env.get_template('welcome.html')
     return render_template(template, username=username)
+
+def checkString(word):
+    if len(word) < 3 or len(word) > 20 or  ' ' in word:
+            return True
+    else:
+        return False
 
 app.run()    
