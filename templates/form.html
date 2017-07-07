@@ -5,13 +5,13 @@
     </style>
 <body>
     <h1>Signup</h1>
-        <form method="post">
+        <form method="post" autocomplete="on">
             <table>
                 <tbody><tr>
                     
                     <td><label for="username">Username</label></td>
                     <td>
-                        <input name="username" value="" type="text">
+                        <input name="username" value="" type="text" >
                        
                         <span class=error> {{ user_error }}</span>
                         
@@ -37,7 +37,7 @@
                     <td><label for="email">Email (optional)</label></td>
                     <td>
                         <input name="email" value="">
-                        <span class="error"></span>
+                        <span class="error">{{ e_error }}</span>
                     </td>
                 </tr>
             </tbody></table>
