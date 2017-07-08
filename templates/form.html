@@ -5,14 +5,14 @@
     </style>
 <body>
     <h1>Signup</h1>
-        <form method="post" autocomplete="on">
+        <form method="post">
             <table>
                 <tbody><tr>
                     
                     <td><label for="username">Username</label></td>
                     <td>
-                        <input name="username" value="" type="text" >
-                       
+                        <input name="username" value= "{{request.form['username']}}" type="text">
+                        
                         <span class=error> {{ user_error }}</span>
                         
                         <span class="error"></span>
@@ -36,7 +36,7 @@
                 <tr>
                     <td><label for="email">Email (optional)</label></td>
                     <td>
-                        <input name="email" value="">
+                        <input name="email" value="{{request.form['email']}}">
                         <span class="error">{{ e_error }}</span>
                     </td>
                 </tr>
